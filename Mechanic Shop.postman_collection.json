@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"johnsmith@email.com\",\r\n    \"phone\": \"1234567890\"\r\n}",
+							"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"johnsmith@email.com\",\r\n    \"phone\": \"1234567890\",\r\n    \"role\": \"customer\",\r\n    \"password\": \"asdf\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,11 +90,21 @@
 				{
 					"name": "Update Customer",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzAyNTk4OTEsImlhdCI6MTczMDI1NjI5MSwic3ViIjozLCJyb2xlIjoiY3VzdG9tZXIifQ.XrU8hqwM9P4e9yCjAwQgJCostBrOE38fuVZEgFqBLqY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Jane Smith\",\r\n    \"email\": \"janesmith@email.com\",\r\n    \"phone\": \"0987654321\"\r\n}",
+							"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"johnsmith@email.com\",\r\n    \"phone\": \"0987654321\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -102,7 +112,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/customers/5",
+							"raw": "http://127.0.0.1:5000/customers",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -112,8 +122,7 @@
 							],
 							"port": "5000",
 							"path": [
-								"customers",
-								"5"
+								"customers"
 							]
 						}
 					},
@@ -122,10 +131,51 @@
 				{
 					"name": "Delete Customer",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzAyNTk4MDksImlhdCI6MTczMDI1NjIwOSwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIifQ.LO9SUO9am6OC10NiaxChOf61no1UbmQgV3D-HuNjIOs",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/customers/3",
+							"raw": "http://127.0.0.1:5000/customers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"johnsmith@email.com\",\r\n    \"password\": \"asdf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/customers/login",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -136,7 +186,7 @@
 							"port": "5000",
 							"path": [
 								"customers",
-								"3"
+								"login"
 							]
 						}
 					},
